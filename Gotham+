@@ -1,0 +1,51 @@
+conky.config = {
+	use_xft = true,
+	font = '123:size=8',
+	xftalpha = 0.1,
+	update_interval = 1,
+
+	own_window = true,
+	own_window_type = 'desktop',
+	own_window_transparent = false,
+	own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager',
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+
+	--own_window = false,
+	--own_window_type = 'override',
+	--own_window_transparent = true,
+	--own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+
+	alignment = 'top_right',
+	gap_x = 10,
+	gap_y = 75,
+	minimum_width = 250,
+	minimum_height = 300,
+	maximum_width = 820,
+
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+
+	no_buffers = true,
+	cpu_avg_samples = 2,
+	net_avg_samples = 1,
+	override_utf8_locale = true,
+
+	color0 = 'EAEAEA',
+	color1 = '#FF217C',
+	color2 = '#0CFFE1',
+};
+
+conky.text = [[
+#Time
+${voffset 10}${color0}${font ttyclock:pixelsize=120}${time %H:%M}${font}${voffset -84}${offset 10}${color1}${font ttyclock:pixelsize=42}${time %d}${offset 20}${time %m}${offset 20}${time %Y}${font}
+${color1}${font GE Inspira:pixelsize=42}${offset 442}${time %A}${font}
+
+#Percentages
+${font Ubuntu}${color2}SSD: ${offset 9}$color${fs_free /} / ${fs_size /}${offset 30}${color2}RAM: ${offset 9}$color$mem / $memmax${offset 30}${color2}CPU Usage: ${offset 9}$color${cpu cpu0}%
+
+#Heatdisplay
+${color2}CPU Temp: ${offset 9}${color1}${execi 10 sensors | grep 'Tctl' | awk {'print $2'}}${offset 54}${color2}GPU Temp: ${offset 9}${color1}${execi 60 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader}°C
+]];
