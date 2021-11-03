@@ -40,12 +40,13 @@ conky.config = {
 
 conky.text = [[
 #Time
-${voffset 10}${color0}${font ttyclock:pixelsize=120}${time %H:%M}${font}${voffset -84}${offset 10}${color1}${font ttyclock:pixelsize=42}${time %d}${offset 20}${time %m}${offset 20}${time %Y}${font}
-${color1}${font GE Inspira:pixelsize=42}${offset 442}${time %A}${font}
+${voffset 10}${color0}${font ttyclock:pixelsize=120}${time %H:%M}${font}${voffset -84}${offset 10}${color2}${font ttyclock:pixelsize=42}${time %d}${offset 20}${color1}${time %m}${offset 20}${time %Y}${font}
+
+${color1}${font abstract:pixelsize=12}${offset 442}${time %A}${font}
 
 #Percentages
-${font Ubuntu}${color2}SSD: ${offset 9}$color${fs_free /} / ${fs_size /}${offset 30}${color2}RAM: ${offset 9}$color$mem / $memmax${offset 30}${color2}CPU Usage: ${offset 9}$color${cpu cpu0}%
+${voffset 25}${font aastrospace}${color2}SSD: ${offset 9}$color${fs_used /} / ${fs_size /}${offset 30}${color2}RAM: ${offset 9}$color$mem / $memmax${offset 30}${color2}CPU Usage: ${offset 9}$color${cpu cpu0}% ${offset 10}${cpubar 10,60 cpu}
 
 #Heatdisplay
-${color2}CPU Temp: ${offset 9}${color1}${execi 10 sensors | grep 'Tctl' | awk {'print $2'}}${offset 54}${color2}GPU Temp: ${offset 9}${color1}${execi 60 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader}°C
+${color2}${font aastrospace}CPU Temp: ${offset 9}${color1}${execi 10 sensors | grep 'Tctl' | awk {'print $2'}}${offset 58}${color2}GPU Temp: ${offset 9}${color1}${execi 60 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader}°C
 ]];
